@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/users.css">
+	<title>Users</title>
+</head>
+
+<body>
+
+	<ul id="navigation">
+		<li>
+			<h3>Corporativo POS Server</h3>
+		</li>
+		<li><a href="inventory.html"><button>Inventory Management</button></a></li>
+		<li><a href="users.html"><button>User Management</button></a></li>
+		<li><a href="store.html"><button>Retail Store Information</button></a></li>
+		<li><a href="cashier.html"><button>Cashier Management</button></a></li>
+	</ul>
+
+	<h3>User Management</h3>
+
+	<form id="user-form" onsubmit="createUser(this);">
+		<input type="text" id="name-entry" name="name" placeholder="Name (unique)" required>
+		<input type="email" id="email-entry" name="email" placeholder="Email" required>
+		<input type="tel" id="phone-entry" name="phone" placeholder="Phone" required>
+		<input type="text" id="username-entry" name="username" placeholder="Username" required>
+		<input type="password" id="password-entry" name="password" placeholder="Password" required>
+		<input type="submit">
+		<input type="reset" value="Clear">
+		<input type="button" onclick="readUsers();" value="Refresh List">
+		<input type="button" onclick="updateUser();" value="Update User">
+		<input type="button" onclick="deleteUser();" value="Delete">
+
+		<input type="checkbox" id="reveal">
+		<label for="reveal">Reveal</label>
+
+
+	</form>
+
+
+	<div id="table-frame">
+		<table id="user-table">
+			<thead>
+				<th id="name-heading">Name</th>
+				<th id="email-heading">Email</th>
+				<th id="phone-heading">Phone</th>
+				<th id="username-heading">Username</th>
+				<th id="password-heading">Password</th>
+			</thead>
+			<tbody>
+				<!--  Below an example of the elemenst created and appended to this table. Check script.js -->
+				<!-- <tr onclick="selectRow(this)"><td>Roberto J. Alvarez</td><td>robertjao@outlook.com</td><td>787-930-9996</td><td>robertjao</td><td>1234</td></tr> -->
+			</tbody>
+		</table>
+	</div>
+
+	<script src="script/users.js"></script>
+</body>
+
+</html>

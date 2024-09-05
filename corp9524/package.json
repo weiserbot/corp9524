@@ -1,0 +1,17 @@
+{
+  "name": "corporativo-pos-server",
+  "version": "1.0.0",
+  "description": "Corporativo POS Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Roberto Alvarez",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "sqlite3": "^5.1.7"
+  }
+}

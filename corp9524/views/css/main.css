@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(156, 157, 158);
+  color:rgb(58, 58, 58);
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#navigation {
+  display: flex;
+}
+
+h3 {
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+#welcome-greet {
+  margin-top: 200px;
+}

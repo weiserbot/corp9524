@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/store.css">
+	<title>Store</title>
+</head>
+
+<body>
+
+	<ul id="navigation">
+		<li>
+			<h3>Corporativo POS Server</h3>
+		</li>
+		<li><a href="inventory.html"><button>Inventory Management</button></a></li>
+		<li><a href="users.html"><button>User Management</button></a></li>
+		<li><a href="store.html"><button>Retail Store Information</button></a></li>
+		<li><a href="cashier.html"><button>Cashier Management</button></a></li>
+	</ul>
+
+	<h3>Retail Store Information</h3>
+
+	<form id="retail-form" onsubmit="createRetailStore(this);">
+		<input type="text" id="name-entry" name="name" placeholder="Name" required>
+		<input type="text" id="address-entry" name="address" placeholder="Address" required>
+		<input type="email" id="email-entry" name="email" placeholder="Email" required>
+		<input type="tel" id="phone-entry" name="phone" placeholder="Phone" required>
+		<input type="text" id="store-number-entry" name="storenumber" placeholder="Store Number" required>
+		<input type="text" id="tax-id-entry" name="taxid" placeholder="Tax Id" required>
+		<input type="submit">
+		<input type="reset" value="Clear">
+		<input type="button" onclick="readRetailStore();" value="Refresh List">
+	</form>
+
+	<br>
+	<h4>Registered to:</h4>
+
+	<div id="retail-name">Name</div>
+	<div id="retail-address">Address</div>
+	<div id="retail-email">Email</div>
+	<div id="retail-phone">Phone</div>
+	<div id="retail-store-number">Store Number</div>
+	<div id="retail-tax-id">Tax ID</div>
+
+	<script src="script/store.js"></script>
+</body>
+
+</html>

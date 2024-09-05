@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/cashier.css">
+	<title>Cashier</title>
+</head>
+
+<body>
+
+	<ul id="navigation">
+		<li>
+			<h3>Corporativo POS Server</h3>
+		</li>
+		<li><a href="inventory.html"><button>Inventory Management</button></a></li>
+		<li><a href="users.html"><button>User Management</button></a></li>
+		<li><a href="store.html"><button>Retail Store Information</button></a></li>
+		<li><a href="cashier.html"><button>Cashier Management</button></a></li>
+	</ul>
+
+	<h3>Cashier Management</h3>
+
+	<form id="cashier-form" onsubmit="createCashier(this);">
+		<label for="register-number-entry">Register Number</label>
+		<input type="text" id="register-number-entry" name="registernumber" placeholder="Id (unique)" required>
+		<label for="cashier-date-entry" name="cashierdate">Date</label>
+		<input type="date" id="cashier-date-entry" name="cashierdate" placeholder="Date" required>
+		<label for="petty-cash-entry">Petty Cash</label>
+		<input type="text" id="petty-cash-entry" name="pettycash" placeholder="Amount" required>
+		<input type="submit" value="Open">
+		<input type="button" onclick="closeCashier();" value="Close">
+		<input type="reset" value="Clear">
+		<input type="button" onclick="readCashiers();" value="Refresh List">
+		<input type="button" onclick="runCashierUpdate();" value="Update Cashier">
+
+
+	</form>
+	<br>
+	<form id="early-deposit-form" onsubmit="earlyDeposit(this);">
+		<label for="early-deposit-entry">Early Deposit</label>
+		<input type="text" id="early-deposit-entry" name="earlydeposit" placeholder="Amount" required>
+		<input type="submit" value="Deposit">
+		<input type="reset" value="Clear">
+	</form>
+
+
+	<div id="table-frame">
+		<table id="open-cashier-table">
+			<thead>
+				<th id="cashier-number-heading">Num</th>
+				<th id="cashier-date-heading">Date</th>
+				<th id="petty-cash-heading">Petty</th>
+				<th id="cash-transactions-heading">Cash</th>
+				<th id="ath-movil-transactions-heading">ATH Movil</th>
+				<th id="debit-credit-transactions-heading">Dbt/Crt</th>
+				<th id="sales-total-heading">Sales Total</th>
+
+				<th id="return-transactions-heading">Return</th>
+				<th id="early-deposit-heading">Early Deposit</th>
+
+				<th id="final-deposit-heading">Final Deposit</th>
+				<th id="cashier-status-heading">Status</th>
+
+			</thead>
+			<tbody>
+				<!--  Below an example of the elemenst created and appended to this table. Check script.js -->
+				<!-- <tr onclick="selectRow(this)"><td>Roberto J. Alvarez</td><td>robertjao@outlook.com</td><td>787-930-9996</td><td>robertjao</td><td>1234</td></tr> -->
+			</tbody>
+		</table>
+	</div>
+
+	<script src="script/cashier.js"></script>
+</body>
+
+</html>

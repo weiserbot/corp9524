@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login</title>
+</head>
+
+<body>
+
+  <h3>Corporativo POS Server Login</h3>
+
+  <form id="login-form" onsubmit="login(this)" method="POST">
+    <input type="text" id="loginusername" name="loginusername" placeholder="Username" required>
+    <input type="password" id="loginpassword" name="loginpassword" placeholder="Password" required>
+    <input type="submit" value="Login">
+  </form>
+
+  <script src="script/login.js"></script>
+</body>
+
+</html>
