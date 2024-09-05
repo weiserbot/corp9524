@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const env_variables = require('./env.json');
-//const PORT = process.env.PORT || 8000;
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
 
