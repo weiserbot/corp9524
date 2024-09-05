@@ -23,7 +23,8 @@
 	<h3>User Management</h3>
 
 	<form id="user-form" onsubmit="createUser(this);">
-		<input type="text" id="name-entry" name="name" placeholder="Name (unique)" required>
+		<input type="text" id="userid-entry" name="userid" placeholder="User id (unique)" required>
+		<input type="text" id="name-entry" name="name" placeholder="Name" required>
 		<input type="email" id="email-entry" name="email" placeholder="Email" required>
 		<input type="tel" id="phone-entry" name="phone" placeholder="Phone" required>
 		<input type="text" id="username-entry" name="username" placeholder="Username" required>
@@ -44,6 +45,7 @@
 	<div id="table-frame">
 		<table id="user-table">
 			<thead>
+				<th id="userid-heading">User id</th>
 				<th id="name-heading">Name</th>
 				<th id="email-heading">Email</th>
 				<th id="phone-heading">Phone</th>

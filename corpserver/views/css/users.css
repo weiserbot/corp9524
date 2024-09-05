@@ -18,21 +18,18 @@ li {
   margin-left: 20px;
 }
 
-#name-entry, #name-heading,
-#email-entry, #email-heading {
-  width: 275px;
+#name-entry, #email-entry {
+  width: 250px;
 }
 
-#phone-enttry, #phone-heading,
-#username-entry, #username-heading,
-#password-entry, #password-heading {
-  width: 175px;
+#name-heading, #email-heading {
+  width: 800px;
 }
 
 #table-frame {
   background-color: lightgray;
   height: 70dvh;
-  width: 1115px;
+  width: 1300px;
   overflow: scroll;
   margin-left: auto;
   margin-right: auto;

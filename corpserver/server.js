@@ -44,7 +44,7 @@ function initializedb() {
 	try {
 		const db = new sqlite3.Database('./database.sqlite');
 		db.run("CREATE TABLE IF NOT EXISTS items (itemcode TEXT PRIMARY KEY, item TEXT, price TEXT)");
-		db.run("CREATE TABLE IF NOT EXISTS users (name TEXT PRIMARY KEY, email TEXT, phone TEXT, username TEXT, password TEXT)");
+		db.run("CREATE TABLE IF NOT EXISTS users (userid TEXT PRIMARY KEY, name TEXT, email TEXT, phone TEXT, username TEXT, password TEXT)");
 		db.run(`CREATE TABLE IF NOT EXISTS cashiers (
 			registernumber TEXT PRIMARY KEY,
 			cashierdate TEXT,
@@ -127,11 +127,11 @@ app.delete("/deleteitem", (req, res) => {
 app.post("/createuser", (req, res) => {
 	let db = initializedb();
 
-	db.run("INSERT INTO users (name, email, phone, username, password) VALUES ($name, $email, $phone, $username, $password)",
-		[req.body.name, req.body.email, req.body.phone, req.body.username, req.body.password], (err) => {
+	db.run("INSERT INTO users (userid, name, email, phone, username, password) VALUES ($userid, $name, $email, $phone, $username, $password)",
+		[req.body.userid, req.body.name, req.body.email, req.body.phone, req.body.username, req.body.password], (err) => {
 			if (err) {
 				console.log(err);
-				res.send({ message: "Name already exists. Try a different name please." });
+				res.send({ message: "User id already exists. Try a different id please." });
 			}
 		});
 	console.log("---User created.---");
@@ -152,8 +152,8 @@ app.get("/readusers", (req, res) => {
 
 app.put("/updateuser", (req, res) => {
 	let db = initializedb();
-	db.run("UPDATE users SET email = $email, phone = $phone, username = $username, password = $password WHERE name = $name",
-		[req.body.email, req.body.phone, req.body.username, req.body.password, req.body.name], (err) => {
+	db.run("UPDATE users SET name = $name, email = $email, phone = $phone, username = $username, password = $password WHERE userid = $userid",
+		[req.body.name, req.body.email, req.body.phone, req.body.username, req.body.password, req.body.userid], (err) => {
 			if (err) {
 				console.log(err);
 			};
@@ -164,7 +164,7 @@ app.put("/updateuser", (req, res) => {
 
 app.delete("/deleteuser", (req, res) => {
 	let db = initializedb();
-	db.run("DELETE FROM users WHERE name = $name", req.body.name, (err) => {
+	db.run("DELETE FROM users WHERE userid = $userid", req.body.userid, (err) => {
 		if (err) {
 			console.log(err);
 			res.send({ message: "Failed to delete user" });

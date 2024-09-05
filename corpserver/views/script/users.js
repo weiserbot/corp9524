@@ -8,7 +8,7 @@ async function createUser(form) {
   await fetch("http://localhost:3000/createuser", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: form.name.value, email: form.email.value, phone: form.phone.value, username: form.username.value, password: form.password.value })
+    body: JSON.stringify({ userid: form.userid.value, name: form.name.value, email: form.email.value, phone: form.phone.value, username: form.username.value, password: form.password.value })
   }).then(res => res.json())
     .then(data => {
       window.alert(data.message);
@@ -33,7 +33,7 @@ function updateUser() {
   fetch('http://localhost:3000/updateuser', {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: userForm.name.value, email: userForm.email.value, phone: userForm.phone.value, username: userForm.username.value, password: userForm.password.value })
+    body: JSON.stringify({ userid: userForm.userid.value, name: userForm.name.value, email: userForm.email.value, phone: userForm.phone.value, username: userForm.username.value, password: userForm.password.value })
   });
   clearForm();
   readUsers();
@@ -46,7 +46,7 @@ function deleteUser() {
   fetch('http://localhost:3000/deleteuser', {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: userForm.name.value })
+    body: JSON.stringify({ userid: userForm.userid.value })
   })
     .then(res => res.json())
     .then(data => {
@@ -66,6 +66,7 @@ function displayTable(tableData) {
     // Table row definition
     let dataTable = document.querySelector('tbody');
     let dataRow = document.createElement('tr');
+    let useridCell = document.createElement('td');
     let nameCell = document.createElement('td');
     let emailCell = document.createElement('td');
     let phoneCell = document.createElement('td');
@@ -73,6 +74,7 @@ function displayTable(tableData) {
     let passwordCell = document.createElement('td');
 
     // Assign values to data cells
+    useridCell.innerHTML = tableData[record].userid;
     nameCell.innerHTML = tableData[record].name;
     emailCell.innerHTML = tableData[record].email;
     phoneCell.innerHTML = tableData[record].phone;
@@ -89,7 +91,7 @@ function displayTable(tableData) {
 
     // Assemble record
     dataTable.append(dataRow);
-    dataRow.append(nameCell, emailCell, phoneCell, usernameCell, passwordCell);
+    dataRow.append(useridCell, nameCell, emailCell, phoneCell, usernameCell, passwordCell);
     dataRow.setAttribute('onclick', 'selectRow(this);');
   };
 };
@@ -100,13 +102,15 @@ function selectRow(rowElement) {
   // Row selection definition
   let userTable = document.getElementById('user-table');
   let rowNumber = rowElement.rowIndex;
-  let nameEntry = 0;
-  let emailEntry = 1;
-  let phoneEntry = 2;
-  let usernameEntry = 3;
-  let passwordEntry = 4;
+  let useridEntry = 0;
+  let nameEntry = 1;
+  let emailEntry = 2;
+  let phoneEntry = 3;
+  let usernameEntry = 4;
+  let passwordEntry = 5;
 
   // Get row data
+  let useridData = userTable.rows[rowNumber].cells[useridEntry].textContent;
   let nameData = userTable.rows[rowNumber].cells[nameEntry].textContent;
   let emailData = userTable.rows[rowNumber].cells[emailEntry].textContent;
   let phoneData = userTable.rows[rowNumber].cells[phoneEntry].textContent;
@@ -115,6 +119,7 @@ function selectRow(rowElement) {
 
   if (previousRow) {
     if (previousRow % 2 == 0) {
+      userTable.rows[previousRow].cells[useridEntry].style.backgroundColor = "rgb(221, 227, 233)";
       userTable.rows[previousRow].cells[nameEntry].style.backgroundColor = "rgb(221, 227, 233)";
       userTable.rows[previousRow].cells[emailEntry].style.backgroundColor = "rgb(221, 227, 233)";
       userTable.rows[previousRow].cells[phoneEntry].style.backgroundColor = "rgb(221, 227, 233)";
@@ -122,6 +127,7 @@ function selectRow(rowElement) {
       userTable.rows[previousRow].cells[passwordEntry].style.backgroundColor = "rgb(221, 227, 233)";
     }
     else {
+      userTable.rows[previousRow].cells[useridEntry].style.backgroundColor = "rgb(245, 247, 248)";
       userTable.rows[previousRow].cells[nameEntry].style.backgroundColor = "rgb(245, 247, 248)";
       userTable.rows[previousRow].cells[emailEntry].style.backgroundColor = "rgb(245, 247, 248)";
       userTable.rows[previousRow].cells[phoneEntry].style.backgroundColor = "rgb(245, 247, 248)";
@@ -130,7 +136,7 @@ function selectRow(rowElement) {
 
     };
   };
-
+  userTable.rows[rowNumber].cells[useridEntry].style.backgroundColor = "darkgray";
   userTable.rows[rowNumber].cells[nameEntry].style.backgroundColor = "darkgray";
   userTable.rows[rowNumber].cells[emailEntry].style.backgroundColor = "darkgray";
   userTable.rows[rowNumber].cells[phoneEntry].style.backgroundColor = "darkgray";
@@ -141,6 +147,7 @@ function selectRow(rowElement) {
 
   // Display in entry fields
   let formEntries = document.getElementById('user-form');
+  formEntries.userid.value = useridData;
   formEntries.name.value = nameData;
   formEntries.email.value = emailData;
   formEntries.phone.value = phoneData;
