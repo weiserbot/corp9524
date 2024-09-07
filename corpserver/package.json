@@ -4,7 +4,7 @@
   "description": "Corporativo POS Server",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon --env-file=.env server.js"
   },
   "author": "Roberto Alvarez",
   "license": "MIT",

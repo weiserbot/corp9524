@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const env_variables = require('./env.json');
 const sqlite3 = require('sqlite3');
 const fs = require('fs');
 
@@ -29,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 // Back-end
 // Login
 app.post("/", (req, res) => {
-	if (req.body.loginusername == env_variables.ADMIN_USERNAME && req.body.loginpassword == env_variables.ADMIN_PASSWORD) {
+	if (req.body.loginusername == process.env.ADMIN_USERNAME && req.body.loginpassword == process.env.ADMIN_PASSWORD) {
 		res.send(JSON.stringify({ message: "Valid" }));
 		console.log(`Log in activity: ${req.body.loginusername}, success`);
 	}
@@ -318,4 +317,4 @@ app.put("/runcashierupdate", (req, res) => {
 
 
 initializedb();
-app.listen(env_variables.PORT, () => console.log(`Server running on port ${env_variables.PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
