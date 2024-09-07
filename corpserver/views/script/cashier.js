@@ -72,10 +72,10 @@ function displayTable(tableData) {
 		cashtransactionsCell.innerHTML = tableData[record].cashtransactions;
 		athmoviltransactionsCell.innerHTML = tableData[record].athmoviltransactions;
 		debitcredittransactionsCell.innerHTML = tableData[record].debitcredittransactions;
-		salestotalCell.innerHTML = tableData[record].salestotal;
+		salestotalCell.innerHTML = parseFloat(tableData[record].salestotal).toFixed(2);
 		returntransactionsCell.innerHTML = tableData[record].returntransactions;
 		earlydepositCell.innerHTML = tableData[record].earlydeposit;
-		finaldepositCell.innerHTML = tableData[record].finaldeposit;
+		finaldepositCell.innerHTML = parseFloat(tableData[record].finaldeposit).toFixed(2);
 		cashierstatusCell.innerHTML = tableData[record].cashierstatus;
 
 		// Assemble record
