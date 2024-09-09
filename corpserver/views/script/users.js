@@ -1,6 +1,7 @@
 // Clear user form
 function clearForm() {
   formEntries = document.getElementById('user-form').reset();
+  readUsers();
 };
 
 // Create user on server
@@ -28,9 +29,9 @@ async function readUsers() {
 };
 
 // Update inventory item
-function updateUser() {
+async function updateUser() {
   const userForm = document.getElementById('user-form');
-  fetch('http://localhost:3000/updateuser', {
+  await fetch('http://localhost:3000/updateuser', {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userid: userForm.userid.value, name: userForm.name.value, email: userForm.email.value, phone: userForm.phone.value, username: userForm.username.value, password: userForm.password.value })
@@ -41,9 +42,9 @@ function updateUser() {
 };
 
 // Delete user
-function deleteUser() {
+async function deleteUser() {
   const userForm = document.getElementById('user-form');
-  fetch('http://localhost:3000/deleteuser', {
+  await fetch('http://localhost:3000/deleteuser', {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userid: userForm.userid.value })

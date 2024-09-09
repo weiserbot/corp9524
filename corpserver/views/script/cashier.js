@@ -1,11 +1,9 @@
 // INVENTORY //////////////////////////////////////////////////////////////////
 // Clear user form
-function clearCashierForm() {
+function clearForm() {
 	document.getElementById('cashier-form').reset();
-};
-
-function clearEarlyDepositForm() {
 	document.getElementById('early-deposit-form').reset();
+	readCashiers();
 };
 
 // Create user on server
@@ -30,8 +28,7 @@ function createCashier(form) {
 		.then(data => {
 			window.alert(data.message);
 		});
-	clearCashierForm();
-	clearEarlyDepositForm();
+	clearForm();
 	readCashiers();
 	event.preventDefault();
 };
@@ -96,8 +93,7 @@ function earlyDeposit(form) {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ earlydeposit: form.earlydeposit.value, registernumber: cashierform.registernumber.value })
 		});
-		clearCashierForm();
-		clearEarlyDepositForm();
+		clearForm();
 		readCashier();
 		event.preventDefault();
 	}
@@ -115,8 +111,7 @@ function closeCashier() {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ registernumber: cashierForm.registernumber.value, cashierstatus: "closed" })
 		});
-		clearCashierForm();
-		clearEarlyDepositForm();
+		clearForm();
 		readCashiers();
 		event.preventDefault();
 	}
@@ -137,8 +132,7 @@ async function runCashierUpdate() {
 			.then(data => {
 				window.alert(data.message);
 			});
-		clearCashierForm();
-		clearEarlyDepositForm();
+		clearForm();
 		readCashiers();
 		event.preventDefault();
 	}

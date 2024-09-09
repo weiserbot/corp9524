@@ -2,6 +2,7 @@
 // Clear user form
 function clearForm() {
 	document.getElementById('item-form').reset();
+	readItems();
 };
 
 // Create user on server

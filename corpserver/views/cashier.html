@@ -30,19 +30,16 @@
 		<label for="petty-cash-entry">Petty Cash</label>
 		<input type="text" id="petty-cash-entry" name="pettycash" placeholder="Amount" required>
 		<input type="submit" value="Open">
-		<input type="button" onclick="closeCashier();" value="Close">
-		<input type="reset" value="Clear">
+		<input type="button" onclick="clearForm();" value="Clear">
 		<input type="button" onclick="readCashiers();" value="Refresh List">
 		<input type="button" onclick="runCashierUpdate();" value="Update Cashier">
-
-
+		<input type="button" onclick="closeCashier();" value="Close">
 	</form>
 	<br>
 	<form id="early-deposit-form" onsubmit="earlyDeposit(this);">
 		<label for="early-deposit-entry">Early Deposit</label>
 		<input type="text" id="early-deposit-entry" name="earlydeposit" placeholder="Amount" required>
 		<input type="submit" value="Deposit">
-		<input type="reset" value="Clear">
 	</form>
 
 
