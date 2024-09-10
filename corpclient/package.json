@@ -1,0 +1,16 @@
+{
+  "name": "corporativo-pos-client",
+  "version": "1.0.0",
+  "description": "Corporativo POS Client",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --env-file=.env server.js"
+  },
+  "author": "Roberto Alvarez",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
