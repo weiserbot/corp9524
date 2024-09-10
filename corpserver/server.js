@@ -36,5 +36,5 @@ app.post("/", (req, res) => {
 
 
 
-initializedb();
+
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
